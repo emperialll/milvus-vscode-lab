@@ -12,9 +12,3 @@ connections.add_connection(
 CONNECTION_ID ="learn"
 connections.connect(CONNECTION_ID)
 
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()
