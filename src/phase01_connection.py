@@ -1,13 +1,11 @@
-from pymilvus import MilvusClient, __version__
-
-
-MILVUS_URI = "http://127.0.0.1:19530"
+from pymilvus import __version__
+from milvus_client import get_milvus_client
 
 
 def main() -> None:
     print(f"PyMilvus version: {__version__}")
 
-    client = MilvusClient(uri=MILVUS_URI)
+    client = get_milvus_client()
 
     databases = client.list_databases()
 
