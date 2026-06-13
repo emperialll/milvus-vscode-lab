@@ -1,10 +1,10 @@
-from milvus_client import get_milvus_client
+from pymilvus import MilvusClient
 
-DATABASE_NAME = "course_db"
+from config import DATABASE_NAME, MILVUS_URI
 
 
 def main() -> None:
-    client = get_milvus_client()
+    client = MilvusClient(uri=MILVUS_URI)
 
     databases = client.list_databases()
     print("Databases before:", databases)
@@ -15,11 +15,10 @@ def main() -> None:
     else:
         print(f"Database already exists: {DATABASE_NAME}")
 
-    client.use_database(DATABASE_NAME)
+    client.using_database(DATABASE_NAME)
     print(f"Now using database: {DATABASE_NAME}")
 
-    databases = client.list_databases()
-    print("Databases after:", databases)
+    print("Databases after:", client.list_databases())
 
 
 if __name__ == "__main__":
